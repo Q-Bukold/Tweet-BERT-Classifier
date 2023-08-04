@@ -1,0 +1,4 @@
+pandas
+numpy
+scikit-learn
+transformers[tf-cpu]==4.31.0
