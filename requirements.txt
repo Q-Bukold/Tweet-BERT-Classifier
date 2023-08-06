@@ -1,4 +1,10 @@
 pandas
 numpy
+openpyxl
+pyyaml
+hydra-core
+omegaconf
+pytz
 scikit-learn
 transformers[tf-cpu]==4.31.0
+nltk
