@@ -1,10 +1,10 @@
 # Tweet-BERT-Classifier
 For HASOC GERMAN
 
-**Training Data**: HASOC 2019-2020
-**Gold Dataset**: hasoc_de_test_gold.tsv (HASOC 2019)
-=> Test-Results logged in 04-test_logs.txt
-=> Model from "Sat19:25:59" was used at the end
+**Training Data**: HASOC 2019-2020 \
+**Gold Dataset**: hasoc_de_test_gold.tsv (HASOC 2019) \
+=> Test-Results logged in 04-test_logs.txt \
+=> Model from "Sat19:25:59" was used at the end \
 
 ## Sources
 => https://github.com/suman101112/hasoc-fire-2020 \
