@@ -1,10 +1,13 @@
 pandas
 numpy
+matplotlib
 openpyxl
 pyyaml
+h5py
 hydra-core
 omegaconf
 pytz
 scikit-learn
 transformers[tf-cpu]==4.31.0
 nltk
+tensorflow-addons

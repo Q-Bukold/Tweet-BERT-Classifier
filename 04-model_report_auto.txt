@@ -1,0 +1,383 @@
+'''
+    input_ids = tf.keras.layers.Input(shape=(SEQ_LEN,), name='input_ids', dtype='int32')
+    mask = tf.keras.layers.Input(shape=(SEQ_LEN,), name='attention_mask', dtype='int32')
+
+    # add layers
+    embeddings = bert(input_ids, attention_mask=mask)[0]  # we only keep tensor 0 (last_hidden_state) of BERT
+    X = tf.keras.layers.GlobalMaxPool1D()(embeddings)  # reduce tensor dimensionality
+    X = tf.keras.layers.BatchNormalization()(X)
+    X = tf.keras.layers.Dense(128, activation='relu')(X)
+    X = tf.keras.layers.Dropout(0.1)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+'''
+
+Sun00:02:40
+model:
+  SEQ_LEN: 50
+  batch_size: 64
+  epochs: 5
+  learning_rate: 0.01
+[0.4525306224822998, 0.8423529267311096, 0.5478435754776001]
+SunXXXXXX
+
+'''
+    input_ids = tf.keras.layers.Input(shape=(SEQ_LEN,), name='input_ids', dtype='int32')
+    mask = tf.keras.layers.Input(shape=(SEQ_LEN,), name='attention_mask', dtype='int32')
+
+    # add layers
+    embeddings = bert(input_ids, attention_mask=mask)[0]  # we only keep tensor 0 (last_hidden_state) of BERT
+    
+    X = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(SEQ_LEN))(embeddings)
+    X = tf.keras.layers.Dense(SEQ_LEN, activation='relu')(X)
+    X = tf.keras.layers.Dropout(0.1)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+'''
+
+Sun01:42:36
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.42949727177619934	0.8176470398902893	0.584031879901886
+509.263370513916
+Sun01:50:57
+
+Sun01:59:29
+SEQ_LEN: 50
+batch_size: 64
+epochs: 20 <---
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4402269721031189	0.8211764693260193	0.5454801321029663
+914.9661977291107
+Sun02:14:39
+
+
+'''
+REDUCED val_size to 0.1
+!IDEA = Introduce more Dropout, to better generalize Modell for different Data
+    X = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(SEQ_LEN))(embeddings)
+    X = tf.keras.layers.Dropout(0.1)(X)
+    X = tf.keras.layers.Dense(SEQ_LEN, activation='relu')(X)
+    X = tf.keras.layers.Dropout(0.2)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+
+=> !MORE DROPOUT
+'''
+
+Sun02:16:31
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4322429597377777	0.841176450252533	0.5565028786659241
+525.7339441776276
+Sun02:25:09
+
+Sun02:25:14
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4285900592803955	0.8376470804214478	0.6020815372467041
+524.2070446014404
+Sun02:33:53
+
+'''
+REDUCED val_size to 0
+!IDEA = Add more layers
+    Xi = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(50))(embeddings)
+    Xi = tf.keras.layers.Dropout(0.1)(Xi)
+    Xi = tf.keras.layers.Dense(200, activation='relu')(Xi)
+    Xi = tf.keras.layers.Dropout(0.2)(Xi)
+    Xi = tf.keras.layers.Dense(50, activation='relu')(Xi)
+    Xi = tf.keras.layers.Dropout(0.1)(Xi)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(Xi)  # adjust based on number of classes
+'''
+
+Sun22:58:44
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.42073971033096313	0.8364706039428711	0.462512344121933
+635.4057099819183
+Sun23:09:14
+
+Sun23:09:19
+SEQ_LEN: 50
+batch_size: 64
+epochs: 20 <--
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4335619807243347	0.8364706039428711	0.5702682733535767
+1302.128651380539
+Sun23:30:56
+
+Sun23:51:12
+SEQ_LEN: 50
+batch_size: 32
+epochs: 30
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.46915218234062195	0.8482353091239929	0.5421234369277954
+1880.618254184723
+Mon00:22:24
+
+'''
+REDUCED val_size to 0.1
+!IDEA = Introduce more Dropout, to better generalize Modell for different Data
+    X = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(SEQ_LEN))(embeddings)
+    X = tf.keras.layers.Dropout(0.1)(X)
+    X = tf.keras.layers.Dense(SEQ_LEN, activation='relu')(X)
+    X = tf.keras.layers.Dropout(0.2)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+
+=> !MORE DROPOUT
+'''
+
+Fri15:49:14
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.413860946893692	0.8458823561668396	0.5122453570365906
+648.5993943214417
+Fri15:59:54
+
+Fri16:00:00
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4373473525047302	0.841176450252533	0.5034595131874084
+640.687985420227
+Fri16:10:35
+
+'''
+    ''' add training layers'''
+    #bert
+    bert = TFAutoModel.from_pretrained(bert_type)
+    embeddings = bert(input_ids, attention_mask=mask)[0]  # we only keep tensor 0 (last_hidden_state) of BERT
+    # other
+    X = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(SEQ_LEN))(embeddings)
+    X = tf.keras.layers.Dropout(0.2)(X)
+    X = tf.keras.layers.Dense(200, activation='relu')(X)
+    X = tf.keras.layers.Dropout(0.2)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+'''Tue14:25:38
+SEQ_LEN: 50
+batch_size: 64
+epochs: 5
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4138765335083008	0.8364706039428711	0.5008260011672974
+349.70511054992676
+Tue14:31:19
+
+Tue14:31:25
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.5199075937271118	0.8329411745071411	0.5310363173484802
+615.1723463535309
+Tue14:41:35
+
+Tue14:41:40
+SEQ_LEN: 50
+batch_size: 64
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.46432992815971375	0.8282352685928345	0.5373270511627197
+658.075697183609
+Tue14:52:33
+
+Tue14:52:38
+SEQ_LEN: 50
+batch_size: 64
+epochs: 20
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4419381618499756	0.8376470804214478	0.48932504653930664
+1284.7177202701569
+Tue15:13:58
+
+'''
+    ''' add training layers'''
+    #bert
+    bert = TFAutoModel.from_pretrained(bert_type)
+    embeddings = bert(input_ids, attention_mask=mask)[0]  # we only keep tensor 0 (last_hidden_state) of BERT
+    # other
+    X = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(SEQ_LEN))(embeddings)
+    X = tf.keras.layers.Dropout(0.1)(X)
+    X = tf.keras.layers.Dense(50, activation='relu')(X)
+    X = tf.keras.layers.Dropout(0.1)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+'''
+Tue15:58:04
+SEQ_LEN: 50
+batch_size: 64
+epochs: 5
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4435283839702606	0.8211764693260193	0.48710617423057556
+349.6010329723358
+Tue16:03:45
+
+Sat14:55:48
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4235997200012207	0.8329411745071411	0.5101460814476013
+646.4628551006317
+Sat15:06:26
+
+Sat15:06:31
+SEQ_LEN: 50
+batch_size: 64
+epochs: 10
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.40069136023521423	0.8399999737739563	0.5200611352920532
+659.2594096660614
+Sat15:17:25
+
+Sat15:17:30
+SEQ_LEN: 50
+batch_size: 64
+epochs: 20
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4565526843070984	0.8352941274642944	0.6100713610649109
+1300.9915356636047
+Sat15:39:06
+
+Sat18:15:52
+SEQ_LEN: 50
+batch_size: 64
+epochs: 20
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.44732290506362915	0.8341176509857178	0.49953025579452515
+1344.8461277484894
+Sat18:38:09
+
+Sat18:42:54
+SEQ_LEN: 50
+batch_size: 64
+epochs: 20
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4372228682041168	0.8329411745071411	0.5101460814476013
+1339.4672107696533
+Sat19:05:05
+
+Sat19:05:10
+SEQ_LEN: 50
+batch_size: 32
+epochs: 20
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4944971799850464	0.8399999737739563	0.4967260956764221
+1248.5373239517212
+Sat19:25:54
+
+Sat19:25:59
+SEQ_LEN: 50
+batch_size: 64
+epochs: 10
+learning_rate: 0.005
+loss	accuracy	f1_score
+0.4384239912033081	0.8270588517189026	0.6177250146865845
+697.5738985538483
+Sat19:37:32
+
+Sat19:37:37
+SEQ_LEN: 50
+batch_size: 64
+epochs: 20
+learning_rate: 0.01
+loss	accuracy	f1_score
+0.4445980191230774	0.8352941274642944	0.581363320350647
+1307.7541658878326
+Sat19:59:20
+
+Sun17:40:47
+SEQ_LEN: 50
+batch_size: 64
+epochs: 10
+learning_rate: 0.005
+loss	accuracy	f1_score
+0.4655552804470062	0.8388235569000244	0.5080083012580872
+730.1103887557983
+Sun17:52:49
+
+Sun17:52:54
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.005
+loss	accuracy	f1_score
+0.4279922544956207	0.8494117856025696	0.5983994603157043
+677.5404434204102
+Sun18:04:07
+
+'''
+    bert = TFAutoModel.from_pretrained(bert_type)
+    embeddings = bert(input_ids, attention_mask=mask)[0]  # we only keep tensor 0 (last_hidden_state) of BERT
+    # other
+    X = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(64,  return_sequences=True))(embeddings)
+    X = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32))(X)
+    X = tf.keras.layers.Dense(64, activation='relu')(X)
+    X = tf.keras.layers.Dropout(0.5)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+'''
+Sun21:57:06
+SEQ_LEN: 50
+batch_size: 64
+epochs: 10
+learning_rate: 0.005
+loss	accuracy	f1_score
+0.6618368625640869	0.8270588517189026	0.522104799747467
+750.373161315918
+Sun22:09:27
+
+'''
+    bert = TFAutoModel.from_pretrained(bert_type)
+    embeddings = bert(input_ids, attention_mask=mask)[0]  # we only keep tensor 0 (last_hidden_state) of BERT
+    # other
+    X = tf.keras.layers.Dense(50, activation='relu')(embeddings)
+    X = tf.keras.layers.Dropout(0.1)(X)
+    layers = tf.keras.layers.Dense(2, activation='softmax', name='outputs')(X)  # adjust based on number of classes
+'''
+Sun22:30:31
+SEQ_LEN: 50
+batch_size: 64
+epochs: 10
+learning_rate: 0.005
+loss	accuracy	f1_score
+0.46882930397987366	0.8399999737739563	0.5410950183868408
+667.2858908176422
+Sun22:41:30
+
+Sun22:41:35
+SEQ_LEN: 50
+batch_size: 32
+epochs: 10
+learning_rate: 0.005
+loss	accuracy	f1_score
+0.4045805037021637	0.8341176509857178	0.48759931325912476
+620.6297578811646
+Sun22:51:51
+
