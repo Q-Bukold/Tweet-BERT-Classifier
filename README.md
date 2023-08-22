@@ -13,6 +13,10 @@ For HASOC GERMAN
 ## Result
 F1 of Model: 0.62
 
-![Distribution_Hate](https://github.com/Q-Bukold/Tweet-BERT-Classifier/blob/main/22-figures/distribution-hate.png?raw=true)
+### Distribution of Hate-Column
+<img width="322" alt="2022-04-09_122409" src="https://github.com/Q-Bukold/Tweet-BERT-Classifier/blob/main/22-figures/distribution-hate.png?raw=true">
 
-![Distribution_Hate_Party](https://github.com/Q-Bukold/Tweet-BERT-Classifier/blob/main/22-figures/hate_by_party.png?raw=true)
+### Median of Hate by Party
+<img width="322" alt="2022-04-09_122409" src="https://github.com/Q-Bukold/Tweet-BERT-Classifier/blob/main/22-figures/hate_by_party.png?raw=true">
+
+=> More statistics in the .ipynb file
