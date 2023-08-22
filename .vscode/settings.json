@@ -1,5 +1,0 @@
-{
-    "files.exclude": {
-        "**/transformers_ts_env": true
-    }
-}
