@@ -7,12 +7,12 @@ For HASOC GERMAN
 => Model from "Sat19:25:59" was used at the end
 
 ## Sources
-=> https://github.com/suman101112/hasoc-fire-2020
+=> https://github.com/suman101112/hasoc-fire-2020 \
 => https://towardsdatascience.com/tensorflow-and-transformers-df6fceaf57cc
 
 ## Result
 F1 of Model: 0.62
 
-![22-figures/distribution-hate.png]
-![22-figures/hate_by_party.png]
+![Distribution_Hate](https://github.com/Q-Bukold/Tweet-BERT-Classifier/blob/main/22-figures/distribution-hate.png?raw=true)
 
+![Distribution_Hate_Party](https://github.com/Q-Bukold/Tweet-BERT-Classifier/blob/main/22-figures/hate_by_party.png?raw=true)
