@@ -1,5 +1,7 @@
 # Tweet-BERT-Classifier
-For HASOC GERMAN
+For HASOC GERMAN \
+* This Code is badly Documented, please open an Issue or write to bukold@uni-hildesheim.de for help. *
+
 
 **Training Data**: HASOC 2019-2020 \
 **Gold Dataset**: hasoc_de_test_gold.tsv (HASOC 2019) \
