@@ -1,7 +1,5 @@
 # Tweet-BERT-Classifier
-For HASOC GERMAN \
-* This Code is badly Documented, please open an Issue or write to bukold@uni-hildesheim.de for help. *
-
+**For HASOC GERMAN**
 
 **Training Data**: HASOC 2019-2020 \
 **Gold Dataset**: hasoc_de_test_gold.tsv (HASOC 2019) \
@@ -21,4 +19,6 @@ F1 of Model: 0.62
 ### Median of Hate by Party
 <img width="322" alt="2022-04-09_122409" src="https://github.com/Q-Bukold/Tweet-BERT-Classifier/blob/main/22-figures/hate_by_party.png?raw=true">
 
-=> More statistics in the .ipynb file
+=> More statistics in the .ipynb file \
+*This Code is badly Documented, please open an Issue or write to bukold@uni-hildesheim.de for help.*
+
